@@ -1,14 +1,24 @@
 #!/bin/bash
 
 #Motion stoppen
+echo
 echo "Service Motion wird gestoppt..."
-
+echo
 service motion stop
+
+#Webcam Snapshot für Github erstellen
+echo
+echo "Snapshot erstellen"
+echo
+fswebcam -c /root/.fswebcam.conf /home/pi/webcam.jpg
 
 #Format fuer Datum einstellen:
 echo "Datumsformat setzen"
+echo
 DATUM=`date +%m.%d.%y-%H.%M`
+echo
 echo $DATUM
+echo
 #Backups anlegen:
 echo "Backup als .tar wird gestartet..."
 tar cfv /srv/server/video0/backup_$DATUM.tar /srv/motion/video0
@@ -29,10 +39,8 @@ echo "Motion Verzeichnis wird geleert..."
 rm -f /srv/motion/video0/*.jpg
 rm -f /srv/motion/video0/*.avi
 
-#Webcam Snapshot für Github erstellen und hochladen
-
+#Webcam Snapshot zu Github  hochladen
 GITPROJECT="webcam"
-fswebcam /home/pi/webcam.jpg
 cp /home/pi/webcam.jpg /srv/git/$GITPROJECT/
 cd /srv/git/$GITPROJECT/
 git add .
