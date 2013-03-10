@@ -32,7 +32,7 @@ rm -f /srv/motion/video0/*.avi
 #Webcam Snapshot für Github erstellen und hochladen
 
 GITPROJECT="webcam"
-fswebcam -r 960x720 -d /dev/video0 /home/pi/webcam.jpg
+fswebcam /home/pi/webcam.jpg
 cp /home/pi/webcam.jpg /srv/git/$GITPROJECT/
 cd /srv/git/$GITPROJECT/
 git add .
