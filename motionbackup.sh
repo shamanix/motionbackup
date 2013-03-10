@@ -30,8 +30,8 @@ rm -f /srv/motion/video0/*.jpg
 rm -f /srv/motion/video0/*.avi
 
 #Webcam Snapshot für Github erstellen und hochladen
-DATE=`date`
-GITPROJECT="shamanix"
+
+GITPROJECT="webcam"
 fswebcam -r 960x720 -d /dev/video0 /home/pi/webcam.jpg
 cp /home/pi/webcam.jpg /srv/git/$GITPROJECT/
 cd /srv/git/$GITPROJECT/
